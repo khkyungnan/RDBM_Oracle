@@ -1,8 +1,12 @@
 sqlplus sys/oracle as sysdba
-
 ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
 
+CREATE USER manage IDENTIFIED BY msg1234;
+GRANT CREATE SESSION TO manage;
+GRANT CREATE ANY TABLE TO manage;
+grant connect, resource, dba to manage;
 
-CREATE USER khnany IDENTIFIED BY kh1234;
+INSERT INTO USER_INFO (USER_ID, USER_NAME, USER_MAIL)
+VALUES (1, 'John','john@kh.com');
 
-grant create session to khnany;
+
