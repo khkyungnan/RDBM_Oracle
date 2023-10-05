@@ -1,0 +1,8 @@
+DDL(Data Definition Language)  
+
+데이터베이스의 스키마 객체를 생성(CREATE), 변경(ALTER), 제거(DROP) 하거나 권한의 부여나 박탈(GRANT, REVOKE), 주석(COMMENT), 자료의 버림(TRUNCATE) 등을 수행하는 문장의 집단 의미
+
+각 문장은 CREATE, ALTER, DROP, TRUNCATE, GRANT, REVOKE, COMMENT 등으로 시작
+
+
+CREATE TABLE "테이블이름" (
