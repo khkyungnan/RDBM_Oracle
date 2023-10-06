@@ -1,0 +1,60 @@
+특정 부서의 모든 사원 직무 업데이트:
+UPDATE EMPLOYEE
+SET JOB = 'MANAGER'
+WHERE DEPTNO = 30;
+
+특정 사원의 상사 업데이트:
+UPDATE EMPLOYEE
+SET MANAGER = 7566
+WHERE ENO = 7499;
+
+특정 부서의 모든 사원의 급여 인상:
+UPDATE EMPLOYEE
+SET SALARY = SALARY * 1.10
+WHERE DNO = 20;
+
+특정 사원의 급여와 수수료 업데이트:
+UPDATE EMPLOYEE
+SET SAL = 3500,
+    COMM = 500
+WHERE EMPNO = 7788;
+
+특정 사원의 고용일자 변경:
+UPDATE EMPLOYEE
+SET HIREDATE = TO_DATE('2022-01-15', 'YYYY-MM-DD')
+WHERE EMPNO = 7521;
+
+특정 급여 등급의 최소 급여 변경:
+UPDATE SALGRADE
+SET MIN_SALARY = 750
+WHERE GRADE = 1;
+
+특정 부서의 사원들을 다른 부서로 이동:
+UPDATE EMPLOYEE
+SET DEPTNO = 10
+WHERE DEPTNO = 40;
+
+특정 급여 등급 삭제:
+DELETE FROM SALGRADE
+WHERE GRADE = 5;
+
+특정 부서에 속한 사원의 모든 정보 삭제:
+DELETE FROM EMPLOYEE
+WHERE DEPTNO = 30;
+
+새로운 사원을 EMPLOYEE 테이블에 추가:
+SELECT M.MName, M.MEmail, H.Hobby
+FROM MEMBERINFO M
+JOIN Hobbies H ON M.MNO = H.MNO;
+
+SMITH의 사원 정보 찾기:
+SELECT *
+FROM EMPLOYEE
+WHERE ENAME = 'SMITH';
+
+모든 사원의 이름과 급여를 선택하는 SQL문:
+SELECT ENAME, SALARY
+FROM EMPLOYEE;
+
+
+
