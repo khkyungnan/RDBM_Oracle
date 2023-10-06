@@ -4,3 +4,15 @@ sql 문을 가져와야 할 때
  sqlplus 사용자이름/사용자비밀번호
  @@sql들어있는주소(위치)\sql파일이름.sql
  예시 ) @@C:\Users\user1\Desktop\EMP_EXAMPLE.sql
+
+
+sqlplus sys/oracle as sysdba
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+CREATE USER manage IDENTIFIED BY msg1234;
+GRANT CREATE SESSION TO manage;
+GRANT CREATE ANY TABLE TO manage;
+grant connect, resource, dba to manage;
+
+
+만약 manage 계정 접속하고 싶다면 : sqlplus  manage/msg1234 

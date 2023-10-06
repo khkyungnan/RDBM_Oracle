@@ -1,8 +1,49 @@
-DDL(Data Definition Language)  
 
-데이터베이스의 스키마 객체를 생성(CREATE), 변경(ALTER), 제거(DROP) 하거나 권한의 부여나 박탈(GRANT, REVOKE), 주석(COMMENT), 자료의 버림(TRUNCATE) 등을 수행하는 문장의 집단 의미
+DDL(Data Definition Language 데이터 정의)
+데이터의 스키마 객체를 생성 변경 
+제거 하거나 권한의 부여나 박탈 주석 자료버림등을 수행
 
-각 문장은 CREATE, ALTER, DROP, TRUNCATE, GRANT, REVOKE, COMMENT 등으로 시작
+생성(CREATE),변경(ALTER), 제거(DROP), 부여나 박탈(GRANT, REVOKE) 주석(COMMENT) 자료 버림(TRUNCATE) 등
 
+각 문장은 CREATE ALTER TRUNCATE, GRANT, REVOKE, COMMENT 등으로 시작
 
-CREATE TABLE "테이블이름" (
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+ Oracle DataBase에서 "_ORACLE_SCRIPT"  모드 활성화
+ _ORACLE_SCRIPT : Oracle DataBase에서 12C 이상 버전에서 사용할 수 있는 특별한 모드
+
+ SESSION(세션) : 
+   컴퓨터 네트워크 분야에서 사용되는 용어
+   사용자 또는 클라이언트 서버 간의 연결을 나타냄
+   데이터베이스는 사용자 또는 응용프로그램이 
+  데이터베이스 서버에 연결
+  상호작용 하는 동안 작업의 단위 의미
+  각 세션은 독립적인 환경을 가지며, 데이터베이스 서버와 통신을 담당
+ 
+ SET (설정) :
+  설정 또는 조정하는데 사용
+  변수 설정 : 변수값을 설정하거나 변경하는데 사용
+  예를들어 SET Salary = 5000; 변수를 5000으로 설정하는것을 의미
+
+GRANT : 
+ 권한을 부여하는 키워드
+ SELECT INSERT UPDATE DELETE CREATE TABLE 등
+ 수행하는 권한을 지정할 수 있음
+ 
+GRANT 사용 예제 : 
+ GRANT 권한 TO 역할 또는 사용자 
+  [WITH GRANT OPTION];
+ 
+ CREATE SESSION 권한 부여 : 
+   사용자가 데이터베이스에 로그인하고 세션을 생성하는데 필요한 권한
+   이 권한을 부여하면 부여된 사용자는 데이터베이스에 로그인할 수 있는
+   권한을 가지게 됨
+ 
+ CREATE ANY TABLE 권한 부여 :
+   사용자가 데이터베이스 내에서 어떤 스키마나 테이블을 생성할 수 있는 권한을 부여
+   권한이 부여된 사용자는 어떤 스키마에서든 테이블을 만들 수 있음
+  
+  CONNECT : 사용자가 데이터베이스에 연결하는데 필요한 권한
+  RESOURCE : 사용자가 테이블, 시퀀스 등의 리소스를 생성할 수 있는 권한 부여
+  DBA :  데이터 베이스 관리자 권한을 가짐
+          사용자에게 거의 모든 데이터베이스 작업을 수행할 수 있는 권한을 부여
+          이 권한은 보안상 주의해서 부여  
