@@ -55,9 +55,15 @@ select dno, sum(salary)
 from employee
 group by dno
 having sum(salary) > = 20000;
-                        
---각 부서에서 가장 오래된 직원 찾기
+
+
+--최근에 입사한 직원의 입사일자
 select dno, max(hiredate)
+from employee
+group by dno;
+
+--각 부서에서 가장 오래된 직원 찾기
+select dno, min(hiredate)
 from employee
 group by dno;
 
