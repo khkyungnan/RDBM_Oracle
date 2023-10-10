@@ -1,60 +1,56 @@
---CREATE 
-/*
-CREATE TABLE FridayTABLE (
- id NUMBER(5) PRIMARY KEY,
- name VARCHAR2(50),
- description VARCHAR2(100),
- birthdate DATE
- );
- */
- --INSERT ¹® 
- --To Date ÇÔ¼ö »ç¿ëÇØ¼­ ³¯Â¥ Çü½ÄÀ¸·Î µ¥ÀÌÅÍ »ğÀÔ
- /*
- INSERT INTO fridaytable (id, name,description, birthdate)
- Values (1, '¹ÚÃ¢±Ô', '±İ¿äÀÏÃµ»ç', TO_DATE('1970-05-25', 'YYYY-MM-DD'));
- INSERT INTO fridaytable (id, name, description, birthdate)
- VALUES (2, '³ª¼¼Èñ', '8¿ùÀÇ ¿äÁ¤', TO_DATE('1997-08-16', 'YYYY-MM-DD')); 
-  INSERT INTO fridaytable (id, name,description, birthdate)
- Values (3, 'ÁÖ¼­°æ', '11¿ùÀÇ¾Ç¸¶', TO_DATE('2002-11-29', 'YYYY-MM-DD'));
- INSERT INTO fridaytable (id, name, description, birthdate)
- VALUES (4, '±è¹Î¼ö', '2¿ùÀÇ ¿äÁ¤', TO_DATE('2000-02-07', 'YYYY-MM-DD')); 
-  INSERT INTO fridaytable (id, name, description, birthdate)
- VALUES (5, 'ÀÌ¹ÌÇı', '2¿ùÀÇ Ãµ»ç', TO_DATE('2001-02-09', 'YYYY-MM-DD')); 
- */
- --ORDER BY : °á°ú Á¤·Ä
- --ÀÌ¸§À» ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
+
+ --ORDER BY : ê²°ê³¼ ì •ë ¬
+ --ì´ë¦„ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
  SELECT * FROM fridaytable ORDER BY birthdate;
  
- --COUNT ÇàÀÇ ¼ö¸¦ ¼¼¾îÁİ´Ï´Ù.
+ --COUNT í–‰ì˜ ìˆ˜ë¥¼ ì„¸ì–´ì¤ë‹ˆë‹¤.
  SELECT COUNT(*) AS row_COUNT FROM fridaytable;
  
- -- Å×ÀÌºí ±¸Á¶ º¯°æÇÏ±â
- -- ¿­ÀÇ Å©±â ´Ã¸®±â
--- description ¿­ÀÇ Å©±â¸¦ ´Ã¸®±â
+ -- í…Œì´ë¸” êµ¬ì¡° ë³€ê²½í•˜ê¸°
+ -- ì—´ì˜ í¬ê¸° ëŠ˜ë¦¬ê¸°
+-- description ì—´ì˜ í¬ê¸°ë¥¼ ëŠ˜ë¦¬ê¸°
 --ALTER TABLE fridaytable MODIFY description VARCHAR2(200);
 
- --SUM ¼ıÀÚ ¿­ÀÇ ÇÕÀ» °è»ê
- --¸ğµç id °ªÀ» ÇÕ»ê
+ --SUM ìˆ«ì ì—´ì˜ í•©ì„ ê³„ì‚°
+ --ëª¨ë“  id ê°’ì„ í•©ì‚°
  SELECT SUM(id) AS id_sum FROM fridaytable;
  
- --TO_CHAR ³¯Â¥¸¦ ¹®ÀÚ¿­·Î º¯È¯
+ --TO_CHAR ë‚ ì§œë¥¼ ë¬¸ìì—´ë¡œ ë³€í™˜
  SELECT name, TO_CHAR(birthdate, 'YYYY-MM-DD') AS birthdate_str From fridaytable;
  
- --LENGTH : ¹®ÀÚ¿­ÀÇ ±æÀÌ ¹İÈ¯
+ --LENGTH : ë¬¸ìì—´ì˜ ê¸¸ì´ ë°˜í™˜
  SELECT description, LENGTH(description) AS name_len FROM fridaytable;
  
  INSERT INTO fridaytable (id, name, description, birthdate)
- VALUES (6, 'Jane Smith', '¸¸³ª½á ¹İ°¡¿ö¿ä!', TO_DATE('2007-05-05', 'YYYY-MM-DD'));
+ VALUES (6, 'Jane Smith', 'ë§Œë‚˜ì¨ ë°˜ê°€ì›Œìš”!', TO_DATE('2007-05-05', 'YYYY-MM-DD'));
  
- -- UPPER ¹®ÀÚ¿­À» ´ë¹®ÀÚ·Î º¯È¯
+ -- UPPER ë¬¸ìì—´ì„ ëŒ€ë¬¸ìë¡œ ë³€í™˜
  SELECT name, UPPER(name) AS upper_name FROM fridaytable;
- -- LOWER ¹®ÀÚ¿­À» ¼Ò¹®ÀÚ·Î º¯È¯
+ -- LOWER ë¬¸ìì—´ì„ ì†Œë¬¸ìë¡œ ë³€í™˜
  SELECT name, LOWER(name) AS lower_name FROM fridaytable;
- --ROUNT ¼ıÀÚ¸¦ ¹İ¿Ã¸²
- --birthdate ¿­ÀÇ ¿¬µµ¸¦ ¹İ¿Ã¸²ÇÏ¿© Ãâ·Â
- --EXTRACT ³¯Â¥ °ª¿¡¼­ ¿¬µµ¸¦ ÃßÃâ
+ --ROUNT ìˆ«ìë¥¼ ë°˜ì˜¬ë¦¼
+ --birthdate ì—´ì˜ ì—°ë„ë¥¼ ë°˜ì˜¬ë¦¼í•˜ì—¬ ì¶œë ¥
+ --EXTRACT ë‚ ì§œ ê°’ì—ì„œ ì—°ë„ë¥¼ ì¶”ì¶œ
  SELECT name, ROUND(EXTRACT(YEAR FROM birthdate)) AS BirthYEAR FROM fridaytable;
  
  
  
+--NVL (Null Value) : null ê°’ì„ ë‹¤ë¥¸ ê°’ìœ¼ë¡œ ëŒ€ì²´
+Select ename, nvl(commission, 0) as commission
+from employee;
+
+--NEXT DAY ë‹¤ìŒ ì£¼ì–´ì§„ ìš”ì¼ ë‚ ì§œ ì°¾ê¸°
+--select ename, next_day(sysdate, 'FRIDAY') as next_day from dual;
+
+--TRUNC : ë‚ ì§œ ë˜ëŠ” ìˆ«ìì˜ ì†Œìˆ˜ë¶€ ì œê±°
+SELECT ENAME, TRUNC(salary) as TRUNC_SALAY from employee;
+
+--Floor, CEIL, ROUND : ìˆ«ì ë°˜ì˜¬ë¦¼ ë° ë‚´ë¦¼
+select ename, floor(salary) as FLOOR_SALary from employee;
+select ename, CEIL(salary) as CEIL_SALARY from employee;
+select ename, round(salary, 2) as round_Salary from employee;
+
+-- ABS :  ì ˆëŒ€ê°’ ê³„ì‚° -ë¥¼ ì—†ì•°
+select ename, abs(commission) as ABS_COMMITION from employee;
+
  
