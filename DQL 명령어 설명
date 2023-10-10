@@ -35,14 +35,16 @@ ORDER BY : 검색 결과를 정렬하기 위해 사용
      --ASC : 오름차순 (Default 값)
      --DESC : 내림차순
 
-
-
-
-UNION     : 두 개 이상의 SELECT 문 결과를 결합해서 
-                하나의 결과 집합으로 반환
+UNION     : 두 개 이상의 SELECT 문 결과를 결합해서 하나의 결과 집합으로 반환
+            UNION 중복된 행을 제거하고 중본 된 행을 포함하지 않는 결과를 생성
    예제코드 ) SELECT 열이름 FROM 테이블1
                  UNION
                  SELECT 열이름 FROM 테이블2;
+
+--Employee 테이블에서 직원의 이름과 연봉 추출 --SALGRADE 테이블에서 급여 등급을 추출하여 합치기
+SELECT ENAME, SALARY FROM EMPLOYEE --직원 이름과 연봉 추출
+UNION     -- 두개의 select 결과를 합침  --이 결과를 중복 행을 제거하고 정렬된 상태로 반환
+SELECT 'SALGRADE' AS ENAME, GRADE AS SALARY FROM SALGRADE; --급여 등급 추출
 
 JOIN        : 다수의 테이블을 연결하여 데이터를 결합하는데 사용
                INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN 등 
