@@ -1,7 +1,11 @@
 ##### MENU DML #####
 -- menu 1
-INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
-VALUES (1, 1, '에스프레소', 3.50, '강렬한 에스프레소 커피');
+INSERT INTO menu (menu_id, cafe_id, menu_name, price)
+VALUES (1, 1, '에스프레소', 3.50);
+
+UPDATE menu
+SET description = '강렬한 에스프레소 커피 영국을 느낄 수 있음'
+WHERE menu_id = 1 AND cafe_id = 1;
 
 -- menu 2
 INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
