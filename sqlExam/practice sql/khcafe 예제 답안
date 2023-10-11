@@ -1,3 +1,5 @@
+cafes에서 cname 이거나 name 경우 감안하여 2가지 select 작성
+
 -- '02'를 포함하는 전화번호를 가지는 서울의 카페 찾기
 SELECT *
 FROM cafes
@@ -19,8 +21,9 @@ SELECT *
 FROM cafes
 WHERE operating_hours LIKE '%매일%';
 
--- 매일 운영되고 가격이 $4.00 미만인 카페 찾기:
-SELECT c.name AS 카페명, m.menu_name AS 메뉴명
+-- -- 매일 운영되고 가격이 $4.00 미만인 카페 찾기:
+--SELECT c.cname AS 카페명, m.menu_name AS 메뉴명
+--SELECT c.name AS 카페명, m.menu_name AS 메뉴명
 FROM cafes c
 JOIN menu m ON c.cafe_id = m.cafe_id
 WHERE operating_hours LIKE '%매일%' AND m.price < 4.00;
@@ -30,27 +33,31 @@ SELECT *
 FROM cafes
 WHERE name LIKE '%대%';
 
--- 모든 카페의 메뉴 항목 수 계산:
-SELECT c.name AS 카페명, COUNT(m.menu_id) AS 메뉴수
+-- -- 모든 카페의 메뉴 항목 수 계산:
+--SELECT c.cname AS 카페명, COUNT(m.menu_id) AS 메뉴수
+--SELECT c.name AS 카페명, COUNT(m.menu_id) AS 메뉴수
 FROM cafes c
 LEFT JOIN menu m ON c.cafe_id = m.cafe_id
 GROUP BY c.name;
 
--- 메뉴 설명에 '아이스'가 포함된 카페 찾기:
-SELECT c.name AS 카페명, m.menu_name AS 메뉴명
+-- -- 메뉴 설명에 '아이스'가 포함된 카페 찾기:
+-- SELECT c.cname AS 카페명, m.menu_name AS 메뉴명
+--SELECT c.name AS 카페명, m.menu_name AS 메뉴명
 FROM cafes c
 JOIN menu m ON c.cafe_id = m.cafe_id
 WHERE m.description LIKE '%아이스%';
 
--- 각 카페별 모든 메뉴 항목의 총 가격 계산:
-SELECT c.name AS 카페명, SUM(m.price) AS 총가격
+-- -- 각 카페별 모든 메뉴 항목의 총 가격 계산:
+-- SELECT c.cname AS 카페명, SUM(m.price) AS 총가격
+-- SELECT c.name AS 카페명, SUM(m.price) AS 총가격
 FROM cafes c
 JOIN menu m ON c.cafe_id = m.cafe_id
 GROUP BY c.name;
 
 
--- '초콜릿'이 메뉴 설명에 포함된 메뉴 항목이 있는 카페 찾기:
-SELECT c.name AS 카페명, m.menu_name AS 메뉴명, m.description AS 설명
+-- -- '초콜릿'이 메뉴 설명에 포함된 메뉴 항목이 있는 카페 찾기:
+-- SELECT c.cname AS 카페명, m.menu_name AS 메뉴명, m.description AS 설명
+-- SELECT c.name AS 카페명, m.menu_name AS 메뉴명, m.description AS 설명
 FROM cafes c
 JOIN menu m ON c.cafe_id = m.cafe_id
 WHERE m.description LIKE '%초콜릿%';
