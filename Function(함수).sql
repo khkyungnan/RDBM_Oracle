@@ -48,9 +48,29 @@ SELECT ENAME, TRUNC(salary) as TRUNC_SALAY from employee;
 --Floor, CEIL, ROUND : 숫자 반올림 및 내림
 select ename, floor(salary) as FLOOR_SALary from employee;
 select ename, CEIL(salary) as CEIL_SALARY from employee;
+
+
 select ename, round(salary, 2) as round_Salary from employee;
 
 -- ABS :  절대값 계산 -를 없앰
 select ename, abs(commission) as ABS_COMMITION from employee;
 
  
+--WINDOW
+WINDOW
+ SQL 에서 사용되는 분석 함수
+	결과 집합 내에서 행의 순서와 관련된 계산을 수행할 수 있음
+	집계, 순위, 평균, 합계 등을 계산할 때 유용
+데이터를 파티션 별로 분할하고 순서를 정의한 다음 각 파티션 내에
+계산을 수행
+<윈도우함수>(<표현식>) OVER (
+	PARTITION BY <파티션 열>
+	ORDER BY <정렬 열>
+	ROWS BETWEEN <시작 행> AND <끝 행>
+)
+<윈도우 함수> : 사용할 윈도우 함수 작성 
+		ex) SUM, AV< RANK 등
+<표현 식> : 계산을 수행할 열 또는 식
+PARTITION BY : 데이터를 파티션으로 나누는데 사용할 열을 지정
+ORDER BY : 각 파티션 내에서 행 순서를 정의하는데 사용할 열을 지정
+ROWS BETWEEN : 계산을 수행할 행의 범위를 정의하는데 사용
