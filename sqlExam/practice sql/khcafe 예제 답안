@@ -1,18 +1,57 @@
---서울에 위치한 모든 카페 조회
-SELECT * fROM cafes WHERE address LIKE '%서울%';
+-- '02'를 포함하는 전화번호를 가지는 서울의 카페 찾기
+SELECT *
+FROM cafes
+WHERE phone_number LIKE '%02%';
 
---메뉴에 아메리카노가 있는 카페 찾기
-SELECT c.menu_name AS 카페명, m.menu_name AS 메뉴명
+
+-- 이름에 '라떼'가 포함된 카페 찾기
+SELECT *
+FROM cafes
+WHERE name LIKE '%라떼%';
+
+-- $4.00 미만의 가격을 가진 메뉴 항목 찾기:
+SELECT *
+FROM menu
+WHERE price < 4.00;
+
+-- 매일 운영되는 카페 찾기:
+SELECT *
+FROM cafes
+WHERE operating_hours LIKE '%매일%';
+
+-- 매일 운영되고 가격이 $4.00 미만인 카페 찾기:
+SELECT c.name AS 카페명, m.menu_name AS 메뉴명
 FROM cafes c
-JOIN menu m ON c.cafe_id = m. cafe_id
-WHERE m.menu_name = '아메리카노';
+JOIN menu m ON c.cafe_id = m.cafe_id
+WHERE operating_hours LIKE '%매일%' AND m.price < 4.00;
 
---주말에 운영하는 카페 목록:
-SELECT * FROM cafes WHERE operating_hours LIKE '%주말%';
+-- '대'라는 이름을 가진 카페 찾기:
+SELECT *
+FROM cafes
+WHERE name LIKE '%대%';
 
---02를 포함하는 전화번호 를 가진 카페 찾기 : 
-SELECT * FROM cafes WHERE phone_number LIKE '%02%';
+-- 모든 카페의 메뉴 항목 수 계산:
+SELECT c.name AS 카페명, COUNT(m.menu_id) AS 메뉴수
+FROM cafes c
+LEFT JOIN menu m ON c.cafe_id = m.cafe_id
+GROUP BY c.name;
+
+-- 메뉴 설명에 '아이스'가 포함된 카페 찾기:
+SELECT c.name AS 카페명, m.menu_name AS 메뉴명
+FROM cafes c
+JOIN menu m ON c.cafe_id = m.cafe_id
+WHERE m.description LIKE '%아이스%';
+
+-- 각 카페별 모든 메뉴 항목의 총 가격 계산:
+SELECT c.name AS 카페명, SUM(m.price) AS 총가격
+FROM cafes c
+JOIN menu m ON c.cafe_id = m.cafe_id
+GROUP BY c.name;
 
 
-
+-- '초콜릿'이 메뉴 설명에 포함된 메뉴 항목이 있는 카페 찾기:
+SELECT c.name AS 카페명, m.menu_name AS 메뉴명, m.description AS 설명
+FROM cafes c
+JOIN menu m ON c.cafe_id = m.cafe_id
+WHERE m.description LIKE '%초콜릿%';
 
