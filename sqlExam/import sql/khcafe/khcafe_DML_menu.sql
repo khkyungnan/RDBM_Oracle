@@ -42,3 +42,62 @@ VALUES (9, 5, '카페 모카', 4.50, '모카풍미의 카페 모카');
 -- menu 10
 INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
 VALUES (10, 5, '바닐라 라떼', 4.25, '바닐라 향의 라떼');
+
+
+
+
+
+-- menu 11
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (11, 6, '차이 티', 3.25, '상쾌한 차이 티');
+
+-- menu 12
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (12, 7, '아포카토', 4.75, '부드러운 아포카토');
+
+-- menu 13
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (13, 8, '헤이즐넛 라떼', 4.50, '고소한 헤이즐넛 풍미');
+
+-- menu 14
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (14, 9, '바닐라 아메리카노', 4.00, '바닐라 아메리카노');
+
+-- menu 15
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (15, 10, '딸기 스무디', 5.50, '달콤한 딸기 스무디');
+
+-- menu 16
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (16, 11, '레몬에이드', 4.25, '상큼한 레몬에이드');
+
+-- menu 17
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (17, 12, '아이스 카페 모카', 5.25, '시원한 아이스 카페 모카');
+
+-- menu 18
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (18, 13, '초코 민트 커피', 4.75, '상쾌한 초코 민트 풍미');
+
+-- menu 19
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (19, 14, '카라멜 맥치아또', 4.50, '달콤한 카라멜 풍미');
+
+-- menu 20
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (20, 15, '아이스 그린 티', 3.75, '시원한 아이스 그린 티');
+
+-- Update menu descriptions
+UPDATE menu
+SET description = '맛있는 차이 티'
+WHERE menu_id = 11;
+
+UPDATE menu
+SET description = '향긋한 아포카토'
+WHERE menu_id = 12;
+
+
+-- 20
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (30, 17, 26, TIMESTAMP '2023-10-11 12:00:00', 1, 4.25);
+
