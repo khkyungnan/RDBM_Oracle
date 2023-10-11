@@ -37,3 +37,29 @@ VALUES (9, 14, 16, TIMESTAMP '2023-10-11 18:30:00', 2, 9.00);
 -- 주문 10
 INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
 VALUES (10, 16, 18, TIMESTAMP '2023-10-11 19:45:00', 1, 4.50);
+
+
+
+
+
+/*******************************
+      수정된 insert 문
+********************************/
+
+
+-- 주문 7
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (7, 7, 7, TIMESTAMP '2023-10-11 09:00:00', 1, 4.25);
+
+-- 주문 8 
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (8, 4, 5, TIMESTAMP '2023-10-11 16:30:00', 3, 15.00);
+
+-- 주문 9 
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (9, 5, 6, TIMESTAMP '2023-10-11 15:45:00', 2, 10.00);
+
+-- 주문 10
+INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
+VALUES (10, 6, 7, TIMESTAMP '2023-10-11 14:15:00', 1, 4.25);
+
