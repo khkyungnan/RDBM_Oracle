@@ -48,3 +48,36 @@ CREATE TABLE menu (
 -- menu 테이블에 description 열 추가
 ALTER TABLE menu
 ADD description VARCHAR2(500);
+
+--orders 테이블
+CREATE TABLE orders (
+    order_id NUMBER PRIMARY KEY,
+    cafe_id NUMBER,
+    menu_id NUMBER,
+    order_date TIMESTAMP,
+    quantity NUMBER,
+    total_price NUMBER
+);
+
+--외래 키 제약 조건 추가
+
+ALTER TABLE orders
+ADD CONSTRAINT fk_orders_cafe
+FOREIGN KEY (cafe_id)
+REFERENCES cafes(cafe_id);
+
+ALTER TABLE orders
+ADD CONSTRAINT fk_orders_menu
+FOREIGN KEY (menu_id)
+REFERENCES menu(menu_id);
+
+-- 테이블 코멘트 추가
+COMMENT ON TABLE orders IS '주문 정보를 저장하는 테이블';
+
+-- 열 코멘트 추가
+COMMENT ON COLUMN orders.order_id IS '주문을 고유하게 식별하는 번호';
+COMMENT ON COLUMN orders.cafe_id IS '주문이 발생한 카페의 ID';
+COMMENT ON COLUMN orders.menu_id IS '주문한 메뉴 항목의 ID';
+COMMENT ON COLUMN orders.order_date IS '주문이 발생한 날짜와 시간';
+COMMENT ON COLUMN orders.quantity IS '주문한 메뉴 항목의 수량';
+COMMENT ON COLUMN orders.total_price IS '주문에 대한 총 금액';
