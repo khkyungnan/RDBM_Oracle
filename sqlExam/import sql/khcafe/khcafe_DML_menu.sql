@@ -101,3 +101,25 @@ WHERE menu_id = 12;
 INSERT INTO orders (order_id, cafe_id, menu_id, order_date, quantity, total_price)
 VALUES (30, 17, 26, TIMESTAMP '2023-10-11 12:00:00', 1, 4.25);
 
+
+-- (메뉴 ID 21부터 26까지)
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (21, 7, '아메리카노', 4.00, '매끈한 아메리카노 커피');
+
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (22, 9, '카페 라떼', 4.50, '부드러운 카페 라떼');
+
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (23, 11, '카푸치노', 4.50, '크림이 올라간 카푸치노');
+
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (24, 13, '아이스 커피', 3.75, '시원한 아이스 커피');
+
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (25, 15, '모카라떼', 5.00, '초콜릿 풍미의 모카라떼');
+
+INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
+VALUES (26, 17, '핫 초코렛', 4.25, '따뜻한 핫 초콜릿');
+
+
+
