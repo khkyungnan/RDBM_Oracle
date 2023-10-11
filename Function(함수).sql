@@ -74,3 +74,19 @@ WINDOW
 PARTITION BY : 데이터를 파티션으로 나누는데 사용할 열을 지정
 ORDER BY : 각 파티션 내에서 행 순서를 정의하는데 사용할 열을 지정
 ROWS BETWEEN : 계산을 수행할 행의 범위를 정의하는데 사용
+
+
+SELECT
+    order_id,
+    order_date,
+    total_price,
+    SUM(total_price) OVER (ORDER BY order_date) AS OD
+FROM
+    orders;
+SUM(total_price) OVER (ORDER BY order_date) AS OD
+ : 이 부분이 윈도우 함수
+  이 함수는 order_date를 기준으로 각 주문의 총 가격을 누적한 값을 반환
+한 것
+	이 결과 집합에는 order_id, order_date,total_price, OD 열이 포함
+각 주문에 대한 누적 가격을 계산할 수 있음
+
