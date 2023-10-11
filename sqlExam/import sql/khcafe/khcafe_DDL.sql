@@ -45,6 +45,6 @@ CREATE TABLE menu (
         REFERENCES cafes(cafe_id)
 );
 
-
-
-
+-- menu 테이블에 description 열 추가
+ALTER TABLE menu
+ADD description VARCHAR2(500);
