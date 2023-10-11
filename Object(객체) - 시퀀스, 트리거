@@ -58,3 +58,18 @@ VIEW
 FROM 테이블명
 JOIN;
 
+CREATE VIEW cafe_order_menu AS
+SELECT
+    o.order_id,
+    c.name AS cafe_name,
+    m.menu_name,
+    o.order_date,
+    o.quantity,
+    m.price,
+    (o.quantity * m.price) AS total_price
+FROM
+    orders o
+    JOIN cafes c ON o.cafe_id = c.cafe_id
+    JOIN menu m ON o.menu_id = m.menu_id;
+
+
