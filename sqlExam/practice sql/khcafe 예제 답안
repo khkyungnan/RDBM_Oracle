@@ -1,0 +1,18 @@
+--서울에 위치한 모든 카페 조회
+SELECT * fROM cafes WHERE address LIKE '%서울%';
+
+--메뉴에 아메리카노가 있는 카페 찾기
+SELECT c.menu_name AS 카페명, m.menu_name AS 메뉴명
+FROM cafes c
+JOIN menu m ON c.cafe_id = m. cafe_id
+WHERE m.menu_name = '아메리카노';
+
+--주말에 운영하는 카페 목록:
+SELECT * FROM cafes WHERE operating_hours LIKE '%주말%';
+
+--02를 포함하는 전화번호 를 가진 카페 찾기 : 
+SELECT * FROM cafes WHERE phone_number LIKE '%02%';
+
+
+
+
