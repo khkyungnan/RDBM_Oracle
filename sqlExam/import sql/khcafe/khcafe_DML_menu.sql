@@ -1,36 +1,5 @@
-### DDL ###
-sqlplus sys/oracle as sysdba
-ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
-CREATE USER khcafe IDENTIFIED BY kh1234;
-GRANT CREATE SESSION TO khcafe;
-GRANT CREATE ANY TABLE TO khcafe;
-GRANT connect, resource, dba to khcafe;
-conn khcafe/kh1234;
+##### MENU DML #####
 
-CREATE TABLE cafes (
-    cafe_id INT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    address VARCHAR(255),
-    phone_number VARCHAR(15),
-    operating_hours VARCHAR(255)
-);
-CREATE SEQUENCE cafe_seq
-  START WITH 1
-  INCREMENT BY 1
-  NOCACHE
-  NOCYCLE;
-  
-CREATE OR REPLACE TRIGGER cafe_trigger
-BEFORE INSERT ON cafes
-FOR EACH ROW
-BEGIN
-  SELECT cafe_seq.NEXTVAL
-  INTO :NEW.cafe_id
-  FROM dual;
-END;
-/
-  
-##### CAFE DML #####
 -- 1
 INSERT INTO cafes (name, address, phone_number, operating_hours)
 VALUES ('카페 서울', '서울시 강남구 역삼로 123', '02-555-1234', '월-금: 07:00-21:00, 주말: 08:00-20:00');
@@ -108,10 +77,6 @@ INSERT INTO cafes (name, address, phone_number, operating_hours)
 VALUES ('바나쁘레소', '서울시 역삼시티동', '02-666-6666', '월-금: 08:30-19:30, 주말: 09:00-18:00');
 
 
-
-
-
-##### MENU DML #####
 -- menu 1
 INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
 VALUES (1, 1, '에스프레소', 3.50, '강렬한 에스프레소 커피');
@@ -151,6 +116,3 @@ VALUES (9, 5, '카페 모카', 4.50, '모카풍미의 카페 모카');
 -- menu 10
 INSERT INTO menu (menu_id, cafe_id, menu_name, price, description)
 VALUES (10, 5, '바닐라 라떼', 4.25, '바닐라 향의 라떼');
-
-
-
