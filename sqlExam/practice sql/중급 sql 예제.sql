@@ -32,7 +32,17 @@ SELECT * FROM book
 WHERE genre = 'Romance' AND price = (SELECT MAX(price) FROM book WHERE genre = 'Romance');
 
 --가격대 별로 책의 판매량(CASE와 JOIN)
-
+-- (price < 10  '상대적으로 구매할 수 있는 책' 10 AND price < 20 THEN '보통 책')
+SELECT price_range, COUNT(*) as book_count
+FROM (
+  SELECT *,
+    CASE
+      WHEN price < 10 THEN '상대적으로 구매할 수 있는 책'
+      WHEN price >= 10 AND price < 20 THEN '보통 책'
+      ELSE '비싼 책'
+    END AS price_range
+  FROM book
+)
 --'소설' 장르의 책과 'Novel' 장르의 책 합치기 (UNION)
 SELECT title, genre FROM book WHERE genre = '소설'
 UNION
@@ -50,17 +60,7 @@ SELECT DISTINCT author
 FROM book
 WHERE author IN (SELECT author FROM book GROUP BY author HAVING COUNT(*) > 1);
 
---책의 가격 범주를 생성 (price < 10  '상대적으로 구매할 수 있는 책' 10 AND price < 20 THEN '보통 책')
-SELECT price_range, COUNT(*) as book_count
-FROM (
-  SELECT *,
-    CASE
-      WHEN price < 10 THEN '상대적으로 구매할 수 있는 책'
-      WHEN price >= 10 AND price < 20 THEN '보통 책'
-      ELSE '비싼 책'
-    END AS price_range
-  FROM book
-)
+
 GROUP BY price_range;
 
 --동일한 장르 내에서 책의 평균 가격을 넘는 책을 찾기
