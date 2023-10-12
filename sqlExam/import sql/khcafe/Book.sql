@@ -62,3 +62,28 @@ SELECT 19, '우리들의 행복한 시간', '공지영', 2005, '978-8934918874',
 UNION ALL
 SELECT 20, '몽실언니', '김련희', 2018, '978-8937464252', 'Novel', '한국 전통문화를 배경으로 한 여성의 이야기.', 18.99, TO_DATE('2018-10-25', 'YYYY-MM-DD'), 'Y' FROM dual;
 
+UPDATE book SET title= '태백싼맥' WHERE title='태백산맥';
+UPDATE book SET title = '땅' WHERE title = '토지';
+select title from book;
+UPDATE BOOK SET TITLE = '또 다른 쉼터' WHERE BOOK_ID = 6;
+
+--책이름을 나디아 연대기으로 7~10번까지 변경하고자 함    BETWEEN
+UPDATE BOOK SET TITLE = '나디아 연대기' 
+WHERE BOOK_ID BETWEEN 7 AND 10;
+--UPDATE 를 이용해서 쿼리문 변경하는 방법 
+UPDATE BOOK
+SET title = 
+    CASE
+        WHEN title= '얼음과 불의 노래' THEN '얼음과 바다의 노래'
+        WHEN title = '해를 품은 달' THEN '달을 품은 달'
+        WHEN title = '빛의 눈동자' THEN '햇빛의 눈동자'
+        WHEN title = '바람의 나라' THEN '파도의 나라'
+        WHEN title = '미래의 선택' THEN '과거의 선택'
+        WHEN title = '꽃을 보듯 너를 본다' THEN '나를 보듯 너를 본다'
+        WHEN title = '아프니까 청춘이다' THEN '아프니까 아픈거다'
+        WHEN title = '소나기' THEN '장대비'
+        WHEN title = '우리들의 행복한 시간' THEN '우리들의 아름다운 시간'
+        WHEN title = '몽실언니' THEN '몽글언니'
+        ELSE title
+END;
+
