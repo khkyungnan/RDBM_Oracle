@@ -49,6 +49,10 @@ CREATE TABLE menu (
 ALTER TABLE menu
 ADD description VARCHAR2(500);
 
+-- menu 테이블에 description 열 크기 수정
+ALTER TABLE menu 
+MODIFY (description VARCHAR2(400));
+
 --orders 테이블
 CREATE TABLE orders (
     order_id NUMBER PRIMARY KEY,
