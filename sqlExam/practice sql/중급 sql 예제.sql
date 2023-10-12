@@ -42,7 +42,9 @@ FROM (
       ELSE '비싼 책'
     END AS price_range
   FROM book
-)
+)	
+GROUP BY price_range;
+
 --'소설' 장르의 책과 'Novel' 장르의 책 합치기 (UNION)
 SELECT title, genre FROM book WHERE genre = '소설'
 UNION
@@ -59,9 +61,6 @@ WHERE rn <= 5;
 SELECT DISTINCT author
 FROM book
 WHERE author IN (SELECT author FROM book GROUP BY author HAVING COUNT(*) > 1);
-
-
-GROUP BY price_range;
 
 --동일한 장르 내에서 책의 평균 가격을 넘는 책을 찾기
 SELECT b1.*
