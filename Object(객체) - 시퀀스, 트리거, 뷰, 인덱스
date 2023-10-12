@@ -72,4 +72,29 @@ FROM
     JOIN cafes c ON o.cafe_id = c.cafe_id
     JOIN menu m ON o.menu_id = m.menu_id;
 
+index (인덱스) : 
+ 데이터베이스 성능을 향상시키는 데 중요한 역할을 하는 데이터 구조
+ 특정 열(컬럼)에 대한 검색 및 조회 작업을 최적화 하기 위해 사용
 
+예제 코드 :
+ --employee 테이블이 있다는 가정
+ CREATE TABLE employee ( 
+	employee_id NEBER(5) PRIMARY KEY,
+	name VARCHAR2(50),
+	hire_date DATE
+);
+
+--인덱스 생성
+ CREATE INDEX 생성해놓은인덱스이름 ON 테이블
+ (어떤 열의 값을 기반으로 검색을 빠르게 하기 위해 작성하는 컬럼이름);
+ CREATE INDEX index_employeetable ON employee(name);
+
+--인덱스를 사용한 select 예제문
+ SELECT * FROM employee WHERE name = 'KH';
+
+* index는 B-Tree  구조로 되어있음
+ B-Tree : 데이터를 저장하고 효율적으로 검색하는데 사용되는 데이터 구조
+ Balanced Tree 주로 데이터베이스 시스템, 파일시스템, 디스크관리, 파일구조
+		검색엔진 등 다양한 컴퓨팅 시스템에서 인덱싱에 사용
+
+ 
