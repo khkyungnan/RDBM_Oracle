@@ -29,3 +29,10 @@ VALUES (5, '후드 집업', '의류', 20.99, 33);
 
 INSERT INTO products(product_id, product_name, category, price,stock_quantity)
 VALUES (6, '원 피 스', '의류', 10.99,2);
+
+
+
+
+--제품 이름으로 검색 (인덱스 활용)
+SELECT * FROM products
+WHERE product_name = '노트북';
