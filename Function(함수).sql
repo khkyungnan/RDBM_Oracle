@@ -90,3 +90,69 @@ SUM(total_price) OVER (ORDER BY order_date) AS OD
 	이 결과 집합에는 order_id, order_date,total_price, OD 열이 포함
 각 주문에 대한 누적 가격을 계산할 수 있음
 
+--제품 이름으로 검색 (인덱스 활용)
+SELECT * FROM products
+WHERE product_name = '노트북';
+
+--주문 ID 주문 검색 (인덱스 활용하여 주문 검색)
+SELECt * FROm orders WHERE order_id = 7;
+
+-- cafe_id 가 6인 카페에서 주문 검색 (인덱스 활용)
+SELECT * FROM orders WHERE cafe_id = 6;
+--10.00~ 15.00 가격 범위로 주문 검색 (인덱스 활용)
+SELECT * FROM orders WHERE total_price >= 10.00
+                      AND total_price <= 15.00;
+/*2023-10-11 14:00:00 ~ 2023-10-11 15:00:00 
+범위로 주문 검색 (인덱스 활용) */
+SELECT * FROm orders
+WHERE order_date >= TIMESTAMP '2023-10-11 14:00:00' 
+AND order_date < TIMESTAMP '2023-10-11 15:00:00 ' ;
+                                 
+/******* 함수 *******/
+
+--문자열에서 특정 문자 또는 문자열을 다른 문자열로 대체
+SELECT REPLACE (description, '풍미', '맛') FROM menu;
+SELECT product_name, REPLACE(product_name, '스마트', '똑똑한')
+FROM products;
+
+--CONCAT 두 문자열을 결합
+SELECT product_name || '가격 : $' || TO_CHAR(price, '999.99') 
+FROM products;
+
+-- SUBSTR 문자열 일부 추출
+SELECT product_name, SUBSTR(product_name, 1, 3) 
+FROM products;
+
+--TRIM, LTRIM, RTRIM 문자열에서 ' ' 제거하는데 사용 
+-- TRIM  문자열   양쪽 끝에 있는 ' '(=공백)을 제거하는데 사용
+-- LTRIM 문자열   왼쪽 (시작부분)의 ' '(=공백)을 제거
+-- RTRIM 문자열 오른쪽 (끝부분)의 ' '(=공백)을 제거
+SELECT product_name, TRIM(' '), LTRIM(product_name, '노트'),
+        RTRIM(product_name,'폰')
+FROM products;
+
+SELECT LTRIM(category, '제품') FROM products;
+--전자제품에서 제품을 제거하고 출력 SELECT RTRIM 활용
+SELECT RTRIM(category, '제품') FROM products;
+SELECT LTRIM(category, '전자') FROM products;
+
+-- INSTR : 문자열에서 특정 문자 위치
+SELECT category, INSTR(category,'품') 
+FROM products;
+
+--LENGTHB, LENGTH : 바이트 문자열 길이, 문자단위로 문자열 길이
+SELECT product_name, LENGTHB(product_name) , LENGTH(product_name)
+FROM products;
+
+--가장 긴 제품 이름 찾기 
+SELECT prodcut_name 
+FROM products 
+WHERE LENGTH(product_name)
+      = (SELECT MAX(LENGTH(product_name)) FROM products);
+--제품 가격 반올림
+SELECT product_name, ROUND(price) FROM products;
+
+--제품 이름에 폰이 들어가는 제품 찾기 INSTR
+SELECT product_name
+FROM products
+WHERE INSTR(product_name, '폰') >0;
