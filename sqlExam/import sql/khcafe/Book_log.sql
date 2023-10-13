@@ -1,3 +1,4 @@
+-------------------     book_log Table 생성       -------------------
 CREATE TABLE book_log (
     log_id NUMBER PRIMARY KEY,
     action_type VARCHAR2(10),
@@ -5,7 +6,7 @@ CREATE TABLE book_log (
     log_date TIMESTAMP
 );
 
-
+-------------------       SEQUENCE 문 생성         -------------------
 CREATE SEQUENCE book_log_seq START WITH 1 INCREMENT BY 1;
 
 /*********************************************************************
