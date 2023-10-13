@@ -44,7 +44,7 @@ NUMBER : 소수점 이하 값을 저장할 수 있는 숫자 데이터 유형
 LOB(Large OBject : 대용량 객체) 데이터 유형
 	텍스트나 이진 데이터와 같은 대량의 데이터를 저장하는데사용
 	종류 CLOB, BLOB
-메일 email
+
 CLOB (Character Large OBject)
 	문자 데이터를 저장하는데 사용
 	대용량 텍스트 문서를 저장하고 검색하는데 적합
